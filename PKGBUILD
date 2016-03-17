@@ -8,14 +8,14 @@
 
 # Maintainer: Jan Tuomi <jan-sebastian.tuomi@aalto.fi>
 pkgname=python-sshmgr
-pkgver=0.1
-pkgrel=4
+pkgver=0.2
+pkgrel=1
 pkgdesc="Minimal ssh connection manager"
 arch=('x86_64' 'i386')
 url=""
 license=('GPL')
 groups=()
-depends=('python3' 'screen')
+depends=('python3' 'openssh')
 makedepends=()
 provides=()
 conflicts=()
