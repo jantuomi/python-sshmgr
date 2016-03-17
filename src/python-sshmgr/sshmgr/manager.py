@@ -2,23 +2,25 @@
 from os import system
 from sshmgr.utils.getch import getch
 import os.path
-
-CONN_DB_PATH = os.path.join(os.path.expanduser("~"), ".sshmgr-db")
+import argparse
 
 class Manager:
+
+	CONN_DB_PATH = os.path.join(os.path.expanduser("~"), ".sshmgr-db")
+	
 	def __init__(self):
 		pass
 
 	def load_conns(self):
 		conns = []
 		try:
-			with open(CONN_DB_PATH) as f:
+			with open(self.CONN_DB_PATH) as f:
 				conns = [l.strip() for l in f.readlines()]
 		except FileNotFoundError:
-			with open(CONN_DB_PATH, 'w') as f:
+			with open(self.CONN_DB_PATH, 'w') as f:
 				conns = []
 		except:
-			print("Could not load connections from file. ({:s})".format(CONN_DB_PATH))
+			print("Could not load connections from file. ({:s})".format(self.CONN_DB_PATH))
 			getch()
 
 		return conns
@@ -30,7 +32,7 @@ class Manager:
 		self.save_conns(conns)
 
 	def save_conns(self, conns):
-		with open(CONN_DB_PATH, 'w') as f:
+		with open(self.CONN_DB_PATH, 'w') as f:
 			for conn in conns:
 				f.write("{:s}\n".format(conn))
 
@@ -93,6 +95,12 @@ class Manager:
 					return
 
 def start():
+	parser = argparse.ArgumentParser(description="Simple text GUI tool for managing SSH connections.")
+	parser.add_argument('--db-path', help="set the path to the data file", default="~/.sshmgr-db")
+	args = parser.parse_args()
+
+	Manager.CONN_DB_PATH = os.path.expanduser(args.db_path)
+
 	s = Manager()
 	s.run()
 

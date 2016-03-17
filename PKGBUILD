@@ -9,7 +9,7 @@
 # Maintainer: Jan Tuomi <jan-sebastian.tuomi@aalto.fi>
 pkgname=python-sshmgr
 pkgver=0.1
-pkgrel=2
+pkgrel=4
 pkgdesc="Minimal ssh connection manager"
 arch=('x86_64' 'i386')
 url=""
