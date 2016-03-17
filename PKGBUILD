@@ -6,16 +6,16 @@
 # See http://wiki.archlinux.org/index.php/Python_Package_Guidelines for more
 # information on Python packaging.
 
-# Maintainer: Your Name <jan-sebastian.tuomi@aalto.fi>
+# Maintainer: Jan Tuomi <jan-sebastian.tuomi@aalto.fi>
 pkgname=python-sshmgr
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Minimal ssh connection manager"
 arch=('x86_64' 'i386')
 url=""
 license=('GPL')
 groups=()
-depends=('python' 'screen')
+depends=('python3' 'screen' 'openssh')
 makedepends=()
 provides=()
 conflicts=()
@@ -27,7 +27,7 @@ source=()
 md5sums=()
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname"
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
