@@ -51,7 +51,7 @@ class Manager:
 		return selection
 
 	def connect(self, connection):
-		system("screen ssh {}".format(connection))
+		system("ssh {}".format(connection))
 		
 	def delete_conn(self, conns):
 		c = input("Which connection should be removed? ")
